@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>You Buddy Interactive Quiz Card</title>
+  <title>YouBuddy Premium Personal Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -18,70 +24,102 @@
             brand: "#d9b99b",
             brandDeep: "#bf9b79"
           },
+          fontFamily: {
+            sans: ["Noto Sans KR", "sans-serif"]
+          },
           boxShadow: {
-            soft: "0 22px 60px rgba(126, 94, 67, 0.12)"
+            soft: "0 30px 80px rgba(126, 94, 67, 0.14)",
+            panel: "0 14px 36px rgba(126, 94, 67, 0.08)"
           }
         }
       }
     };
   </script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-sand via-[#fbf7f2] to-white text-cocoa">
+<body class="min-h-screen bg-gradient-to-br from-sand via-[#fbf7f2] to-white font-sans text-cocoa">
   <main class="mx-auto flex min-h-screen w-full max-w-6xl items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
-    <section class="w-full overflow-hidden rounded-[32px] border border-[#efe3d5] bg-cream shadow-soft">
-      <div class="border-b border-[#f1e5d8] px-6 py-6 sm:px-8">
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p class="mb-2 text-xs font-semibold uppercase tracking-[0.35em] text-latte">You Buddy</p>
-            <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Interactive Quiz Card</h1>
-            <p class="mt-2 max-w-2xl text-sm leading-6 text-latte sm:text-base">
-              팀원 발표 복습용 객관식 퀴즈 카드. 정답 확인, 해설, 진행률 표시까지 한 화면에서 처리합니다.
+    <section class="w-full overflow-hidden rounded-[36px] border border-[#e9dbc8] bg-cream shadow-soft">
+      <div class="border-b border-[#f1e5d8] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.95),rgba(255,249,242,0.92)_40%,rgba(244,233,219,0.96)_100%)] px-6 py-6 sm:px-8">
+        <div class="flex flex-col gap-5">
+          <div class="flex flex-col gap-4">
+            <div class="inline-flex w-fit items-center gap-3 rounded-full border border-[#eadcca] bg-white/75 px-4 py-2 shadow-panel backdrop-blur">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brandDeep text-sm font-extrabold text-white">Y</span>
+              <div>
+                <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-latte">YouBuddy Premium</p>
+                <p class="text-sm font-semibold text-cocoa">Business English Routine</p>
+              </div>
+            </div>
+
+            <button id="home-btn" type="button" class="w-fit text-left">
+              <h1 class="max-w-4xl text-[1.45rem] font-extrabold leading-[1.2] tracking-[-0.05em] text-cocoa sm:text-[2.25rem]">
+                비즈니스 영어 루틴 챌린지 3기 프리미엄 개인퀴즈
+              </h1>
+            </button>
+
+            <p class="max-w-3xl text-[15px] leading-7 text-latte sm:text-[1.02rem]">
+              발표에서 실제로 다뤘던 표현과 문장을 다시 꺼내 쓰는 개인 복습 퀴즈입니다.
+              <br />
+              <br />
+              언제든지 다시 풀어보실 수 있습니다.
             </p>
           </div>
 
-          <div class="inline-flex items-center gap-2 rounded-full border border-[#efe3d5] bg-white/80 px-4 py-2 text-sm text-latte">
-            <span class="h-2.5 w-2.5 rounded-full bg-brandDeep"></span>
-            <span id="deck-status">퀴즈 대기 중</span>
-          </div>
-        </div>
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex flex-wrap gap-2">
+              <span class="inline-flex items-center rounded-full border border-[#e7d7c2] bg-white/72 px-4 py-2 text-sm font-semibold text-latte shadow-panel">
+                Premium 3기
+              </span>
+              <span class="inline-flex items-center rounded-full border border-[#e7d7c2] bg-white/72 px-4 py-2 text-sm font-semibold text-latte shadow-panel">
+                Personal Quiz Deck
+              </span>
+              <span class="inline-flex items-center rounded-full border border-[#e7d7c2] bg-white/72 px-4 py-2 text-sm font-semibold text-latte shadow-panel">
+                Presentation Review
+              </span>
+            </div>
 
-        <div class="mt-6">
-          <div class="mb-2 flex items-center justify-between text-sm text-latte">
-            <span id="progress-label">0 / 0</span>
-            <span id="progress-percent">0%</span>
+            <div class="flex items-center gap-2 px-1 text-sm text-latte">
+              <span class="h-2.5 w-2.5 rounded-full bg-brandDeep"></span>
+              <span id="deck-status">퀴즈 대기 중</span>
+            </div>
           </div>
-          <div class="h-3 overflow-hidden rounded-full bg-[#f1e6da]">
-            <div id="progress-fill" class="h-full w-0 rounded-full bg-gradient-to-r from-brand to-brandDeep transition-all duration-300"></div>
+
+          <div class="mt-1">
+            <div class="mb-2 flex items-center justify-between text-sm text-latte">
+              <span id="progress-label">0 / 0</span>
+              <span id="progress-percent">0%</span>
+            </div>
+            <div class="h-3 overflow-hidden rounded-full bg-[#f1e6da]">
+              <div id="progress-fill" class="h-full w-0 rounded-full bg-gradient-to-r from-brand to-brandDeep transition-all duration-300"></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="grid gap-6 px-6 py-6 sm:px-8 lg:grid-cols-[1.15fr_0.85fr]">
-        <section class="rounded-[28px] border border-[#efe3d5] bg-white p-6 sm:p-8">
+      <div class="px-6 py-6 sm:px-8">
+        <section class="rounded-[30px] border border-[#efe3d5] bg-[linear-gradient(180deg,#ffffff_0%,#fffcf8_100%)] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] sm:p-8">
           <div id="profile-screen">
             <div class="mb-6 flex items-center justify-between gap-3">
-              <span class="rounded-full bg-sand px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-latte">
+              <span class="rounded-full border border-[#eadbc8] bg-sand px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-latte">
                 Team Members
               </span>
               <span class="text-sm text-latte">Profile Select</span>
             </div>
 
-            <h2 class="text-2xl font-semibold leading-tight sm:text-3xl">
+            <h2 class="text-[1.65rem] font-extrabold leading-[1.22] tracking-[-0.04em] sm:text-[2.1rem]">
               본인 이름을 누르고 퀴즈로 들어가세요.
             </h2>
-            <p class="mt-3 text-sm leading-6 text-latte sm:text-base">
+            <p class="mt-3 text-[15px] leading-7 text-latte">
               팀원별로 다른 문제 세트를 연결할 수 있게 구성했습니다.
             </p>
 
-            <div id="profile-list" class="mt-8 grid gap-3"></div>
+            <div id="profile-list" class="mt-7 grid gap-3"></div>
           </div>
 
           <div id="quiz-screen" class="hidden">
             <div class="mb-6 flex items-center justify-between gap-3">
-              <span id="category-badge" class="rounded-full bg-sand px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-latte">
+              <span id="category-badge" class="rounded-full border border-[#eadbc8] bg-sand px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-latte">
                 Ready
               </span>
-              <span class="text-sm text-latte">Multiple Choice</span>
             </div>
 
             <div class="mb-5 flex items-center justify-between gap-3">
@@ -98,10 +136,10 @@
               </button>
             </div>
 
-            <h2 id="question-text" class="text-2xl font-semibold leading-tight sm:text-3xl">
+            <h2 id="question-text" class="text-[2rem] font-extrabold leading-[1.2] tracking-[-0.04em] sm:text-[2.5rem]">
               퀴즈 데이터를 넣으면 여기에서 카드가 시작됩니다.
             </h2>
-            <p id="question-hint" class="mt-3 text-sm leading-6 text-latte sm:text-base"></p>
+            <p id="question-hint" class="mt-3 text-base leading-7 text-latte"></p>
 
             <div id="options-container" class="mt-8 grid gap-3"></div>
 
@@ -115,18 +153,18 @@
               />
               <div class="mt-4 flex flex-wrap gap-3">
                 <button
-                  id="submit-btn"
+                  id="hint-btn"
                   type="button"
-                  class="inline-flex items-center justify-center rounded-full bg-cocoa px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#4c3c30]"
+                  class="inline-flex items-center justify-center rounded-full border border-[#e8d7c6] bg-[#fffaf4] px-5 py-3 text-sm font-semibold text-cocoa transition hover:bg-[#f8efe5]"
                 >
-                  제출
+                  힌트
                 </button>
                 <button
                   id="reveal-btn"
                   type="button"
-                  class="inline-flex items-center justify-center rounded-full border border-[#e8d7c6] bg-[#fffaf4] px-5 py-3 text-sm font-semibold text-cocoa transition hover:bg-[#f8efe5]"
+                  class="inline-flex items-center justify-center rounded-full bg-cocoa px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#4c3c30]"
                 >
-                  정답 보기
+                  정답 공개
                 </button>
               </div>
             </div>
@@ -152,31 +190,6 @@
             </div>
           </div>
         </section>
-
-        <aside class="rounded-[28px] border border-[#efe3d5] bg-sand/60 p-6 sm:p-8">
-          <h3 class="text-lg font-semibold">사용 방법</h3>
-          <ul class="mt-4 space-y-3 text-sm leading-6 text-latte sm:text-base">
-            <li>1. 팀원 이름 버튼을 누르면 그 사람 전용 퀴즈로 들어갑니다.</li>
-            <li>2. <code class="rounded bg-white px-1.5 py-0.5 text-cocoa">app.js</code> 안에 팀원별 문제 배열을 넣으면 됩니다.</li>
-            <li>3. 객관식 버튼을 누르면 정답/오답과 해설이 바로 표시됩니다.</li>
-            <li>4. 현재 문제를 확인한 뒤 `다음 문제` 버튼으로 다음 카드로 이동합니다.</li>
-          </ul>
-
-          <div class="mt-8 rounded-3xl border border-[#eadbcd] bg-white/80 p-5">
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-latte">데이터 포맷</p>
-            <pre class="mt-3 overflow-x-auto text-xs leading-6 text-cocoa sm:text-sm"><code>{
-  "정주혜": [
-    {
-      category: "Vocabulary",
-      question: "질문 내용",
-      options: ["보기1", "보기2", "보기3", "보기4"],
-      answer: "정답 보기",
-      explanation: "해설"
-    }
-  ]
-}</code></pre>
-          </div>
-        </aside>
       </div>
     </section>
   </main>
@@ -184,7 +197,7 @@
   <div id="result-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/30 px-4">
     <div class="w-full max-w-md rounded-[28px] border border-[#efe3d5] bg-[#fffdf9] p-6 shadow-soft">
       <p class="text-xs font-semibold uppercase tracking-[0.28em] text-latte">Quiz Result</p>
-      <h3 class="mt-3 text-2xl font-semibold text-cocoa">정주혜 퀴즈 완료</h3>
+      <h3 id="result-title" class="mt-3 text-2xl font-semibold text-cocoa">퀴즈 완료</h3>
       <p id="result-score" class="mt-4 text-3xl font-semibold text-cocoa">0 / 0</p>
       <p id="result-message" class="mt-3 text-sm leading-6 text-latte sm:text-base"></p>
       <div class="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -206,6 +219,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=20260310-01"></script>
+  <script src="app.js?v=20260311-05"></script>
 </body>
 </html>

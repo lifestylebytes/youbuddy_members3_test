@@ -111,8 +111,122 @@ const quizDeck = [
   }
 ];
 
+const kimGaYeonDeck = [
+  {
+    id: 1,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "full-blown",
+    meaning: "본격적인, 완전한",
+    question: "Many customers didn't have a need for a ____ _____ off roader.",
+    hint: "뜻: 본격적인, 완전한",
+    answer: "full-blown",
+    explanation: "예문 전체: Many customers didn't have a need for a full-blown off roader."
+  },
+  {
+    id: 2,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "mass market",
+    meaning: "대중 시장",
+    question: "We developed the RAV4 as a ____ ______ compact SUV.",
+    hint: "뜻: 대중 시장",
+    answer: "mass market",
+    explanation: "예문 전체: We developed the RAV4 as a mass market compact SUV."
+  },
+  {
+    id: 3,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "distinct",
+    meaning: "뚜렷한, 차별화된",
+    question: "It will have 3 ________ personalities that we describe as Core, Rugged, and Sport.",
+    hint: "뜻: 뚜렷한, 차별화된",
+    answer: "distinct",
+    explanation: "예문 전체: It will have 3 distinct personalities that we describe as Core, Rugged, and Sport."
+  },
+  {
+    id: 4,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "commitment to",
+    meaning: "~에 대한 의지, 헌신",
+    question: "It's another example of our __________ __ reducing carbon emissions.",
+    hint: "뜻: ~에 대한 의지, 헌신",
+    answer: "commitment to",
+    explanation: "예문 전체: It's another example of our commitment to reducing carbon emissions."
+  },
+  {
+    id: 5,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "as quickly as possible",
+    meaning: "가능한 한 빠르게",
+    question: "We want to reduce carbon emissions as much as possible, __ _______ __ ________.",
+    hint: "뜻: 가능한 한 빠르게",
+    answer: "as quickly as possible",
+    explanation: "예문 전체: We want to reduce carbon emissions as much as possible, as quickly as possible."
+  },
+  {
+    id: 6,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "bumps",
+    meaning: "끌어올리다, 향상시키다",
+    question: "The new 5th generation Hybrid system ______ total horsepower to 236.",
+    hint: "뜻: 끌어올리다, 향상시키다",
+    answer: "bumps",
+    explanation: "예문 전체: The new 5th generation Hybrid system bumps total horsepower to 236."
+  },
+  {
+    id: 7,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "retaining",
+    meaning: "유지하면서",
+    question: "The system reaches 236 horsepower while still _________ excellent efficiency.",
+    hint: "뜻: 유지하면서",
+    answer: "retaining",
+    explanation: "예문 전체: The new 5th generation Hybrid system bumps total horsepower to 236 while still retaining excellent efficiency."
+  },
+  {
+    id: 8,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "high dampening adhesive",
+    meaning: "고감쇠 접착제",
+    question: "We've reduced road noise with ____ __________ adhesive.",
+    hint: "뜻: 고감쇠 접착제",
+    answer: "high dampening",
+    explanation: "예문 전체: We've reduced road noise with high dampening adhesive."
+  },
+  {
+    id: 9,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "handling",
+    meaning: "핸들링, 조향 성능",
+    question: "We've improved ________ with frame and suspension reinforcements.",
+    hint: "뜻: 핸들링, 조향 성능",
+    answer: "handling",
+    explanation: "예문 전체: We've improved handling with frame and suspension reinforcements."
+  },
+  {
+    id: 10,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "reinforcements",
+    meaning: "보강, 강화",
+    question: "We've improved handling with frame and suspension ______________.",
+    hint: "뜻: 보강, 강화",
+    answer: "reinforcements",
+    explanation: "예문 전체: We've improved handling with frame and suspension reinforcements."
+  }
+];
+
 const teamQuizDecks = {
-  "정주혜": quizDeck
+  "정주혜": quizDeck,
+  "김가연": kimGaYeonDeck
 };
 
 const state = {
@@ -127,6 +241,7 @@ const progressLabelEl = document.getElementById("progress-label");
 const progressPercentEl = document.getElementById("progress-percent");
 const progressFillEl = document.getElementById("progress-fill");
 const deckStatusEl = document.getElementById("deck-status");
+const homeBtnEl = document.getElementById("home-btn");
 const profileScreenEl = document.getElementById("profile-screen");
 const quizScreenEl = document.getElementById("quiz-screen");
 const profileListEl = document.getElementById("profile-list");
@@ -137,7 +252,7 @@ const questionHintEl = document.getElementById("question-hint");
 const optionsContainerEl = document.getElementById("options-container");
 const answerFormEl = document.getElementById("answer-form");
 const answerInputEl = document.getElementById("answer-input");
-const submitBtnEl = document.getElementById("submit-btn");
+const hintBtnEl = document.getElementById("hint-btn");
 const revealBtnEl = document.getElementById("reveal-btn");
 const feedbackPanelEl = document.getElementById("feedback-panel");
 const feedbackTitleEl = document.getElementById("feedback-title");
@@ -147,6 +262,7 @@ const helperTextEl = document.getElementById("helper-text");
 const nextBtnEl = document.getElementById("next-btn");
 const backBtnEl = document.getElementById("back-btn");
 const resultModalEl = document.getElementById("result-modal");
+const resultTitleEl = document.getElementById("result-title");
 const resultScoreEl = document.getElementById("result-score");
 const resultMessageEl = document.getElementById("result-message");
 const retryBtnEl = document.getElementById("retry-btn");
@@ -158,6 +274,19 @@ function normalizeAnswer(value) {
     .toLowerCase()
     .replace(/[’']/g, "'")
     .replace(/\s+/g, " ");
+}
+
+function normalizeForComparison(value) {
+  return normalizeAnswer(value).replace(/[^a-z0-9]/g, "");
+}
+
+function getInitialHint(answer) {
+  return (answer || "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0))
+    .join(" · ");
 }
 
 function updateProgress() {
@@ -205,13 +334,13 @@ function createProfileButton(name) {
   const button = document.createElement("button");
   button.type = "button";
   button.className = [
-    "w-full rounded-[24px] border border-[#efe3d5] bg-[#fffaf4] px-5 py-5 text-left transition",
-    "hover:border-[#dcc3ab] hover:bg-[#fdf5ec]"
+    "w-full rounded-[24px] border border-[#eadbc8] bg-[linear-gradient(180deg,#fffdf9_0%,#fbf4eb_100%)] px-5 py-5 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition",
+    "hover:-translate-y-[1px] hover:border-[#d8c1a2] hover:shadow-[0_16px_36px_rgba(126,94,67,0.08)]"
   ].join(" ");
   button.innerHTML = `
-    <span class="block text-xs font-semibold uppercase tracking-[0.25em] text-latte">Team Member</span>
-    <span class="mt-2 block text-2xl font-semibold text-cocoa">${name}</span>
-    <span class="mt-2 block text-sm text-latte">본인 이름을 눌러 퀴즈를 시작합니다.</span>
+    <span class="block text-xs font-bold uppercase tracking-[0.28em] text-latte">Team Member</span>
+    <span class="mt-2.5 block text-[2rem] font-extrabold tracking-[-0.04em] text-cocoa">${name}</span>
+    <span class="mt-2.5 block text-[15px] leading-6 text-latte">본인 이름을 눌러 퀴즈를 시작합니다.</span>
   `;
   button.addEventListener("click", () => selectProfile(name));
   return button;
@@ -229,7 +358,7 @@ function resetInteractionAreas() {
   answerFormEl.classList.add("hidden");
   answerInputEl.value = "";
   answerInputEl.disabled = false;
-  submitBtnEl.disabled = false;
+  hintBtnEl.disabled = false;
   revealBtnEl.disabled = false;
   feedbackPanelEl.classList.add("hidden");
   nextBtnEl.disabled = true;
@@ -262,6 +391,7 @@ function openResultModal() {
   const total = state.activeDeck.length;
   const percentage = total ? Math.round((state.score / total) * 100) : 0;
 
+  resultTitleEl.textContent = `${state.selectedName} 퀴즈 완료`;
   resultScoreEl.textContent = `${state.score} / ${total}`;
   resultMessageEl.textContent = `${state.selectedName} 님 점수는 ${percentage}점입니다. 다시 풀거나 닫아서 화면에 머물 수 있습니다.`;
   resultModalEl.classList.remove("hidden");
@@ -284,7 +414,7 @@ function restartCurrentQuiz() {
 function showFeedback({ title, titleColor, panelStyle, answerText, explanation }) {
   feedbackPanelEl.classList.remove("hidden");
   feedbackPanelEl.className = `mt-8 rounded-3xl border px-5 py-4 ${panelStyle}`;
-  feedbackTitleEl.className = `text-sm font-semibold uppercase tracking-[0.2em] ${titleColor}`;
+  feedbackTitleEl.className = `text-base font-extrabold tracking-[-0.03em] ${titleColor}`;
   feedbackTitleEl.textContent = title;
   feedbackAnswerEl.textContent = answerText;
   feedbackExplanationEl.textContent = explanation || "";
@@ -320,9 +450,8 @@ function renderQuestion() {
   resetInteractionAreas();
 
   answerFormEl.classList.remove("hidden");
-  answerInputEl.placeholder = "빈칸에 들어갈 표현을 직접 입력하세요";
-  submitBtnEl.textContent = "제출";
-  helperTextEl.textContent = `뜻: ${currentQuiz.meaning}`;
+  answerInputEl.placeholder = "빈칸에 들어갈 표현을 입력한 뒤 Enter를 누르세요";
+  helperTextEl.textContent = `뜻: ${currentQuiz.meaning} · 현재 점수 ${state.score}점 · Enter로 제출`;
 }
 
 function selectProfile(name) {
@@ -340,12 +469,12 @@ function handleShortAnswer() {
   if (state.answered) return;
 
   const currentQuiz = state.activeDeck[state.currentIndex];
-  const submitted = normalizeAnswer(answerInputEl.value);
-  const expected = normalizeAnswer(currentQuiz.answer);
+  const submitted = normalizeForComparison(answerInputEl.value);
+  const expected = normalizeForComparison(currentQuiz.answer);
 
   if (!submitted) {
     showFeedback({
-      title: "Need Answer",
+      title: "답을 입력해 주세요",
       titleColor: "text-[#8b684a]",
       panelStyle: "border-[#d8c3ae] bg-[#fff8ef]",
       answerText: "답을 먼저 입력하세요.",
@@ -358,18 +487,22 @@ function handleShortAnswer() {
 
   const isCorrect = submitted === expected;
   answerInputEl.disabled = true;
-  submitBtnEl.disabled = true;
+  hintBtnEl.disabled = true;
   revealBtnEl.disabled = true;
   if (isCorrect) {
     state.score += 1;
   }
 
   showFeedback({
-    title: isCorrect ? "Correct" : "Incorrect",
-    titleColor: isCorrect ? "text-[#8b684a]" : "text-[#b06b5f]",
-    panelStyle: isCorrect ? "border-[#d8c3ae] bg-[#fff8ef]" : "border-[#ead8d1] bg-[#fff7f5]",
-    answerText: `정답: ${currentQuiz.answer}`,
-    explanation: currentQuiz.explanation
+    title: isCorrect ? "정답입니다" : "오답입니다",
+    titleColor: isCorrect ? "text-[#5f7a35]" : "text-[#b05d57]",
+    panelStyle: isCorrect ? "border-[#dbe4c4] bg-[#f7fbef]" : "border-[#f0d2ce] bg-[#fff4f2]",
+    answerText: isCorrect
+      ? `정답입니다. 정답: ${currentQuiz.answer}`
+      : `입력한 답: ${answerInputEl.value || "-"} / 정답: ${currentQuiz.answer}`,
+    explanation: isCorrect
+      ? `${currentQuiz.explanation} 현재 점수는 ${state.score}점입니다.`
+      : `${currentQuiz.explanation} 현재 점수는 ${state.score}점입니다.`
   });
 }
 
@@ -378,11 +511,11 @@ function revealAnswer() {
 
   const currentQuiz = state.activeDeck[state.currentIndex];
   answerInputEl.disabled = true;
-  submitBtnEl.disabled = true;
+  hintBtnEl.disabled = true;
   revealBtnEl.disabled = true;
 
   showFeedback({
-    title: "Answer Revealed",
+    title: "정답 공개",
     titleColor: "text-[#8b684a]",
     panelStyle: "border-[#d8c3ae] bg-[#fff8ef]",
     answerText: `정답: ${currentQuiz.answer}`,
@@ -390,7 +523,19 @@ function revealAnswer() {
   });
 }
 
-submitBtnEl.addEventListener("click", handleShortAnswer);
+function showHint() {
+  if (state.answered) return;
+
+  const currentQuiz = state.activeDeck[state.currentIndex];
+  const initialHint = getInitialHint(currentQuiz.answer);
+
+  feedbackPanelEl.classList.remove("hidden");
+  feedbackPanelEl.className = "mt-8 rounded-3xl border border-[#d8c3ae] bg-[#fff8ef] px-5 py-4";
+  feedbackTitleEl.className = "text-base font-extrabold tracking-[-0.03em] text-[#8b684a]";
+  feedbackTitleEl.textContent = "힌트";
+  feedbackAnswerEl.textContent = `첫 글자 힌트: ${initialHint}`;
+  feedbackExplanationEl.textContent = currentQuiz.hint || "";
+}
 
 answerInputEl.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
@@ -399,6 +544,7 @@ answerInputEl.addEventListener("keydown", (event) => {
   }
 });
 
+hintBtnEl.addEventListener("click", showHint);
 revealBtnEl.addEventListener("click", revealAnswer);
 
 nextBtnEl.addEventListener("click", () => {
@@ -409,6 +555,7 @@ nextBtnEl.addEventListener("click", () => {
 backBtnEl.addEventListener("click", showProfileScreen);
 retryBtnEl.addEventListener("click", restartCurrentQuiz);
 closeModalBtnEl.addEventListener("click", closeResultModal);
+homeBtnEl.addEventListener("click", showProfileScreen);
 
 renderProfiles();
 showProfileScreen();
