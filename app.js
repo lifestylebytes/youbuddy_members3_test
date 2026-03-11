@@ -370,7 +370,7 @@ function createProfileButton(name) {
   ].join(" ");
   button.innerHTML = `
     <span class="block text-xs font-bold uppercase tracking-[0.28em] text-latte">Team Member</span>
-    <span class="mt-2.5 block text-[1.7rem] font-extrabold tracking-[-0.04em] text-cocoa">${name}</span>
+    <span class="mt-2.5 block text-[1rem] font-extrabold tracking-[-0.03em] text-cocoa sm:text-[1.1rem]">${name}</span>
     <span class="mt-2 block text-[14px] leading-6 text-latte">본인 이름을 눌러 퀴즈를 시작합니다.</span>
   `;
   button.addEventListener("click", () => selectProfile(name));
