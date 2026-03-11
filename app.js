@@ -280,6 +280,37 @@ function normalizeForComparison(value) {
   return normalizeAnswer(value).replace(/[^a-z0-9]/g, "");
 }
 
+function getEditDistance(source, target) {
+  const rows = source.length + 1;
+  const cols = target.length + 1;
+  const dp = Array.from({ length: rows }, () => Array(cols).fill(0));
+
+  for (let i = 0; i < rows; i += 1) dp[i][0] = i;
+  for (let j = 0; j < cols; j += 1) dp[0][j] = j;
+
+  for (let i = 1; i < rows; i += 1) {
+    for (let j = 1; j < cols; j += 1) {
+      const cost = source[i - 1] === target[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + cost
+      );
+    }
+  }
+
+  return dp[source.length][target.length];
+}
+
+function isAcceptedAnswer(submitted, expected) {
+  if (!submitted || !expected) return false;
+  if (submitted === expected) return true;
+
+  // Allow one small typo after removing spaces, hyphens, and case differences.
+  const distance = getEditDistance(submitted, expected);
+  return distance <= 1;
+}
+
 function getInitialHint(answer) {
   return (answer || "")
     .trim()
@@ -485,7 +516,7 @@ function handleShortAnswer() {
     return;
   }
 
-  const isCorrect = submitted === expected;
+  const isCorrect = isAcceptedAnswer(submitted, expected);
   answerInputEl.disabled = true;
   hintBtnEl.disabled = true;
   revealBtnEl.disabled = true;
@@ -495,8 +526,8 @@ function handleShortAnswer() {
 
   showFeedback({
     title: isCorrect ? "정답입니다" : "오답입니다",
-    titleColor: isCorrect ? "text-[#5f7a35]" : "text-[#b05d57]",
-    panelStyle: isCorrect ? "border-[#dbe4c4] bg-[#f7fbef]" : "border-[#f0d2ce] bg-[#fff4f2]",
+    titleColor: isCorrect ? "text-[#2f6b2f]" : "text-[#b05d57]",
+    panelStyle: isCorrect ? "border-[#b9ddb9] bg-[#ecf8ec]" : "border-[#efb8b1] bg-[#fff0ee]",
     answerText: isCorrect
       ? `정답입니다. 정답: ${currentQuiz.answer}`
       : `입력한 답: ${answerInputEl.value || "-"} / 정답: ${currentQuiz.answer}`,
@@ -515,7 +546,7 @@ function revealAnswer() {
   revealBtnEl.disabled = true;
 
   showFeedback({
-    title: "정답 공개",
+    title: "정답확인",
     titleColor: "text-[#8b684a]",
     panelStyle: "border-[#d8c3ae] bg-[#fff8ef]",
     answerText: `정답: ${currentQuiz.answer}`,
@@ -545,7 +576,7 @@ answerInputEl.addEventListener("keydown", (event) => {
 });
 
 hintBtnEl.addEventListener("click", showHint);
-revealBtnEl.addEventListener("click", revealAnswer);
+revealBtnEl.addEventListener("click", handleShortAnswer);
 
 nextBtnEl.addEventListener("click", () => {
   state.currentIndex += 1;
