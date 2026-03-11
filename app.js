@@ -224,9 +224,579 @@ const kimGaYeonDeck = [
   }
 ];
 
+const leeGeunNaDeck = [
+  {
+    id: 1,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "take ownership",
+    meaning: "(업무/문제에 대해) 주인의식, 책임감을 가지다",
+    question: "I decided to take _________ of this problem and lead the architectural revamp.",
+    hint: "뜻: 주인의식, 책임감을 가지다",
+    answer: "ownership",
+    explanation: "예문 전체: I decided to take ownership of this problem and lead the architectural revamp."
+  },
+  {
+    id: 2,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "shake things up",
+    meaning: "(기존의 방식을 타파하고) 대대적으로 개편하다",
+    question: "Our Home Screen is our highest-traffic entry point, so we really needed to ______ things ___.",
+    hint: "뜻: 대대적으로 개편하다",
+    answer: "shake things up",
+    explanation: "예문 전체: Our Home Screen is our highest-traffic entry point, so we really needed to shake things up."
+  },
+  {
+    id: 3,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "raise the bar",
+    meaning: "기준(목표치)을 높이다",
+    question: "We knew that applying band-aids wouldn't work anymore. We needed to _____ the ___.",
+    hint: "뜻: 기준(목표치)을 높이다",
+    answer: "raise the bar",
+    explanation: "예문 전체: We knew that applying band-aids wouldn't work anymore. We needed to raise the bar."
+  },
+  {
+    id: 4,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "scope creep",
+    meaning: "프로젝트 범위가 통제 없이 계속 확장되는 현상",
+    question: "We had a lot of feature requests coming in, but to avoid _____ _____, we stayed laser-focused.",
+    hint: "뜻: 프로젝트 범위가 통제 없이 계속 확장되는 현상",
+    answer: "scope creep",
+    explanation: "예문 전체: We had a lot of feature requests coming in, but to avoid scope creep, we stayed laser-focused."
+  },
+  {
+    id: 5,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "elephant in the room",
+    meaning: "누구나 알고 있지만 언급하기 꺼려하는 명백하고 큰 문제",
+    question: "But here was the ________ __ the room: despite high traffic, we were facing declining conversion rates.",
+    hint: "뜻: 누구나 알고 있지만 언급하기 꺼려하는 큰 문제",
+    answer: "elephant in the room",
+    explanation: "예문 전체: But here was the elephant in the room: despite high traffic, we were facing declining conversion rates."
+  },
+  {
+    id: 6,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "went back to the drawing board",
+    meaning: "(계획이 실패하여) 처음부터 다시 시작하다, 설계하다",
+    question: "To tackle this, we essentially went back to the ________ ______ and completely redesigned our data-fetching architecture.",
+    hint: "뜻: 처음부터 다시 시작하다, 설계하다",
+    answer: "drawing board",
+    explanation: "예문 전체: To tackle this, we essentially went back to the drawing board and completely redesigned our data-fetching architecture."
+  },
+  {
+    id: 7,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "technical levers",
+    meaning: "(목표 달성을 위해) 기술적 수단과 방법",
+    question: "I pulled several technical ______ here. In networking, we reduced redundant calls.",
+    hint: "뜻: 목표 달성을 위한 기술적 수단과 방법",
+    answer: "levers",
+    explanation: "예문 전체: I pulled several technical levers here. In networking, we reduced redundant calls."
+  },
+  {
+    id: 8,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "technical debt",
+    meaning: "기술 부채",
+    question: "_________ _____ is a direct business risk. It's not just an engineering complaint.",
+    hint: "뜻: 기술 부채",
+    answer: "technical debt",
+    explanation: "예문 전체: Technical Debt is a direct business risk. It's not just an engineering complaint."
+  },
+  {
+    id: 9,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "bottlenecks",
+    meaning: "병목 현상, 진행을 가로막는 장애물",
+    question: "Before we dive into the solutions, let's look at the ____________.",
+    hint: "뜻: 병목 현상, 진행을 가로막는 장애물",
+    answer: "bottlenecks",
+    explanation: "예문 전체: Before we dive into the solutions, let's look at the bottlenecks."
+  },
+  {
+    id: 10,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "churn",
+    meaning: "이탈률, 고객 이탈",
+    question: "We were facing declining conversion rates and increasing ______.",
+    hint: "뜻: 이탈률, 고객 이탈",
+    answer: "churn",
+    explanation: "예문 전체: We were facing declining conversion rates and increasing churn."
+  }
+];
+
+const kimWonMiDeck = [
+  {
+    id: 1,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "passenger belly capacity",
+    meaning: "여객기 하부",
+    question: "We are reviewing the available __________ ______ capacity on international routes.",
+    hint: "뜻: 여객기 하부",
+    answer: "passenger belly",
+    explanation: "표현 전체: passenger belly capacity"
+  },
+  {
+    id: 2,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "yield",
+    meaning: "평균 운임 단가",
+    question: "Our cargo ______ improved in the second half of the year.",
+    hint: "뜻: 평균 운임 단가",
+    answer: "yield",
+    explanation: "표현 전체: yield"
+  },
+  {
+    id: 3,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "fundamentally",
+    meaning: "근본적으로",
+    question: "The market has __________ changed compared to last year.",
+    hint: "뜻: 근본적으로",
+    answer: "fundamentally",
+    explanation: "표현 전체: fundamentally"
+  },
+  {
+    id: 4,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "proactive",
+    meaning: "적극적으로",
+    question: "We need to take a more _________ approach to customer communication.",
+    hint: "뜻: 적극적으로",
+    answer: "proactive",
+    explanation: "표현 전체: proactive"
+  },
+  {
+    id: 5,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "pricing integrity",
+    meaning: "가격 원칙 유지",
+    question: "Even in a difficult market, we must protect our _______ __________.",
+    hint: "뜻: 가격 원칙 유지",
+    answer: "pricing integrity",
+    explanation: "표현 전체: pricing integrity"
+  },
+  {
+    id: 6,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "diversification",
+    meaning: "다양화, 다변화",
+    question: "Portfolio ______________ remains one of our top priorities.",
+    hint: "뜻: 다양화, 다변화",
+    answer: "diversification",
+    explanation: "표현 전체: diversification"
+  },
+  {
+    id: 7,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "strategic direction",
+    meaning: "전략적 방향(성)",
+    question: "Today, I will walk you through our strategic __________ for 2026.",
+    hint: "뜻: 전략적 방향(성)",
+    answer: "direction",
+    explanation: "예문 전체: Today, I will walk you through our strategic direction for 2026."
+  },
+  {
+    id: 8,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "key challenges",
+    meaning: "핵심 과제, 도전 요소",
+    question: "We faced three key __________ throughout 2025.",
+    hint: "뜻: 핵심 과제, 도전 요소",
+    answer: "challenges",
+    explanation: "예문 전체: We faced three key challenges throughout 2025."
+  },
+  {
+    id: 9,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "milestones",
+    meaning: "(중요) 이정표, 주요 성과, 단계",
+    question: "Let me share the __________ we achieved in 2025.",
+    hint: "뜻: (중요) 이정표, 주요 성과, 단계",
+    answer: "milestones",
+    explanation: "예문 전체: Let me share the milestones we achieved in 2025."
+  },
+  {
+    id: 10,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "structural change",
+    meaning: "구조적 변화",
+    question: "We are now seeing __________ change in the market.",
+    hint: "뜻: 구조적 변화",
+    answer: "structural",
+    explanation: "예문 전체: We are now seeing structural change in the market."
+  }
+];
+
+const kimSeoYoonDeck = [
+  {
+    id: 1,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "minimum viable product",
+    meaning: "최소 기능 제품, MVP",
+    question: "After launching the app, the first step is to release a minimum viable ________ and observe how users interact with the core features.",
+    hint: "뜻: 최소 기능 제품, MVP",
+    answer: "product",
+    explanation: "예문 전체: After launching the app, the first step is to release a minimum viable product (MVP) and observe how users interact with the core features."
+  },
+  {
+    id: 2,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "validate",
+    meaning: "검증하다",
+    question: "The main objective at this stage is to ________ whether the system actually motivates users to start and complete tasks.",
+    hint: "뜻: 검증하다",
+    answer: "validate",
+    explanation: "예문 전체: The main objective at this stage is to validate whether the system actually motivates users to start and complete tasks more consistently."
+  },
+  {
+    id: 3,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "behavioral data",
+    meaning: "행동 데이터",
+    question: "Based on user feedback and __________ data, we plan to iterate on key aspects of the product.",
+    hint: "뜻: 행동 데이터",
+    answer: "behavioral",
+    explanation: "예문 전체: Based on user feedback and behavioral data, we plan to iterate on key aspects of the product."
+  },
+  {
+    id: 4,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "differentiate",
+    meaning: "차별화하다",
+    question: "A multiplayer or social interaction feature could definitely __________ the app from other productivity tools.",
+    hint: "뜻: 차별화하다",
+    answer: "differentiate",
+    explanation: "예문 전체: A multiplayer or social interaction feature could definitely differentiate the app from other productivity tools."
+  },
+  {
+    id: 5,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "gamification",
+    meaning: "게이미피케이션",
+    question: "Questify integrates routine building and __________ directly into the workflow to encourage users to actually start tasks.",
+    hint: "뜻: 게이미피케이션",
+    answer: "gamification",
+    explanation: "예문 전체: Questify integrates routine building and gamification directly into the workflow to encourage users to actually start tasks."
+  },
+  {
+    id: 6,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "sense of urgency",
+    meaning: "긴박감",
+    question: "The main reason we introduced gamification is to create a sense of ________.",
+    hint: "뜻: 긴박감",
+    answer: "urgency",
+    explanation: "예문 전체: The main reason we introduced gamification is to create a sense of urgency."
+  },
+  {
+    id: 7,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "reward-based progression system",
+    meaning: "보상 기반 성장 시스템",
+    question: "It also introduces a reward-based __________ system, where users gain experience and level up after completing tasks.",
+    hint: "뜻: 보상 기반 성장 시스템",
+    answer: "progression",
+    explanation: "예문 전체: It also introduces a reward-based progression system, where users gain experience and level up after completing tasks."
+  },
+  {
+    id: 8,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "short-form content platforms",
+    meaning: "숏폼 콘텐츠 플랫폼",
+    question: "Our initial marketing strategy focuses on short-form content __________ such as Instagram Reels, TikTok, and YouTube Shorts.",
+    hint: "뜻: 숏폼 콘텐츠 플랫폼",
+    answer: "platforms",
+    explanation: "예문 전체: Our initial marketing strategy focuses on short-form content platforms such as Instagram Reels, TikTok, and YouTube Shorts."
+  },
+  {
+    id: 9,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "session completion rate",
+    meaning: "세션 완료율",
+    question: "We plan to track several key metrics, including session completion ______, average focus duration, and daily active users.",
+    hint: "뜻: 세션 완료율",
+    answer: "rate",
+    explanation: "예문 전체: We plan to track several key metrics, including session completion rate, average focus duration, daily active users, and habit retention over time."
+  },
+  {
+    id: 10,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "daily active users",
+    meaning: "일일 활성 사용자 수",
+    question: "One of the key metrics we will track is daily active ______.",
+    hint: "뜻: 일일 활성 사용자 수",
+    answer: "users",
+    explanation: "예문 전체: We plan to track several key metrics, including session completion rate, average focus duration, daily active users, and habit retention over time."
+  }
+];
+
+const jeongHyeWonDeck = [
+  {
+    id: 1,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "proactive",
+    meaning: "선제적인, 사전 대응의",
+    question: "Today, I would like to talk about why _________ safety inspections are important.",
+    hint: "뜻: 선제적인, 사전 대응의",
+    answer: "proactive",
+    explanation: "예문 전체: Today, I would like to talk about why proactive safety inspections are important."
+  },
+  {
+    id: 2,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "inspection",
+    meaning: "점검, 검사",
+    question: "Proactive safety __________ is important because it prevents accidents before they happen.",
+    hint: "뜻: 점검, 검사",
+    answer: "inspection",
+    explanation: "예문 전체: Proactive safety inspection is important because it prevents accidents before they happen."
+  },
+  {
+    id: 3,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "workplace",
+    meaning: "작업장",
+    question: "No one should get injured at our __________.",
+    hint: "뜻: 작업장",
+    answer: "workplace",
+    explanation: "예문 전체: No one should get injured at our workplace."
+  },
+  {
+    id: 4,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "work suspension",
+    meaning: "작업 중지",
+    question: "If a serious accident happens, the government can order a work __________.",
+    hint: "뜻: 작업 중지",
+    answer: "suspension",
+    explanation: "예문 전체: If a serious accident happens, the government can order a work suspension."
+  },
+  {
+    id: 5,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "financial losses",
+    meaning: "재정적 손실",
+    question: "This can cause huge delays and financial ______.",
+    hint: "뜻: 재정적 손실",
+    answer: "losses",
+    explanation: "예문 전체: This can cause huge delays and financial losses."
+  },
+  {
+    id: 6,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "implement",
+    meaning: "실행하다",
+    question: "Now, I will explain how we can __________ proactive safety inspection at our site.",
+    hint: "뜻: 실행하다",
+    answer: "implement",
+    explanation: "대본 표현 기반: How We Will Implement Proactive Safety Inspection"
+  },
+  {
+    id: 7,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "visual materials",
+    meaning: "시각 자료",
+    question: "We will provide __________ training materials, such as pictures and videos, to help workers understand more easily.",
+    hint: "뜻: 시각 자료",
+    answer: "visual",
+    explanation: "예문 전체: We will provide visual training materials, such as pictures and videos, to help workers understand more easily."
+  },
+  {
+    id: 8,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "precautions",
+    meaning: "예방 조치",
+    question: "Through daily TBM meetings, we will review the day's safety __________ every morning.",
+    hint: "뜻: 예방 조치",
+    answer: "precautions",
+    explanation: "예문 전체: Through daily TBM meetings, we will review the day's safety precautions and important points every morning."
+  },
+  {
+    id: 9,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "regulation",
+    meaning: "규정, 규제",
+    question: "Under the Serious Accidents Punishment Act, safety has become a major issue because of stronger safety __________.",
+    hint: "뜻: 규정, 규제",
+    answer: "regulation",
+    explanation: "표현 확장: safety regulation"
+  },
+  {
+    id: 10,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "reminder",
+    meaning: "상기시키는 것",
+    question: "Daily TBM meetings can serve as a safety __________ for all workers before starting work.",
+    hint: "뜻: 상기시키는 것",
+    answer: "reminder",
+    explanation: "표현 확장: safety reminder"
+  }
+];
+
+const heoYoonHyeongDeck = [
+  {
+    id: 1,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "walk you through",
+    meaning: "설명하다",
+    question: "Let me briefly walk you ________ the study design.",
+    hint: "뜻: 설명하다",
+    answer: "through",
+    explanation: "예문 전체: Let me briefly walk you through the study design."
+  },
+  {
+    id: 2,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "dive into",
+    meaning: "본론으로 들어가다",
+    question: "Now let's ______ into the results.",
+    hint: "뜻: 본론으로 들어가다",
+    answer: "dive",
+    explanation: "예문 전체: Now let's dive into the results."
+  },
+  {
+    id: 3,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "wrap up",
+    meaning: "마지막으로 정리하다",
+    question: "Let me ______ up the key takeaway.",
+    hint: "뜻: 마지막으로 정리하다",
+    answer: "wrap",
+    explanation: "예문 전체: Let me wrap up the key takeaway."
+  },
+  {
+    id: 4,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "key takeaway",
+    meaning: "핵심 메시지",
+    question: "The key __________ is that influencer effectiveness varies by stage.",
+    hint: "뜻: 핵심 메시지",
+    answer: "takeaway",
+    explanation: "예문 전체: The key takeaway is that influencer effectiveness varies by stage."
+  },
+  {
+    id: 5,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "important part",
+    meaning: "중요한 부분",
+    question: "Here is the important ______ of the findings.",
+    hint: "뜻: 중요한 부분",
+    answer: "part",
+    explanation: "예문 전체: Here is the important part of the findings."
+  },
+  {
+    id: 6,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "I might be wrong",
+    meaning: "내가 틀릴 수도 있지만",
+    question: "I might be ______, but that assumption may not always hold true.",
+    hint: "뜻: 내가 틀릴 수도 있지만",
+    answer: "wrong",
+    explanation: "예문 전체: I might be wrong, but that assumption may not always hold true."
+  },
+  {
+    id: 7,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "research addresses",
+    meaning: "이 연구가 다루는 질문",
+    question: "This is the question this research tries to __________.",
+    hint: "뜻: 이 연구가 다루다, 다루는 질문",
+    answer: "address",
+    explanation: "예문 전체: This is the question this research tries to address."
+  },
+  {
+    id: 8,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "clearly stand out",
+    meaning: "분명히 나타나다",
+    question: "Chefs clearly stand ______ at the conversion stage.",
+    hint: "뜻: 분명히 나타나다",
+    answer: "out",
+    explanation: "예문 전체: Chefs clearly stand out at the conversion stage."
+  },
+  {
+    id: 9,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "remains underexplored",
+    meaning: "아직 충분히 연구되지 않았다",
+    question: "Cost-effectiveness remains ________________.",
+    hint: "뜻: 아직 충분히 연구되지 않았다",
+    answer: "underexplored",
+    explanation: "예문 전체: Cost-effectiveness remains underexplored."
+  },
+  {
+    id: 10,
+    type: "short-answer",
+    category: "Presentation Vocabulary",
+    phrase: "a pattern emerges",
+    meaning: "패턴이 나타나다",
+    question: "A clear pattern __________ in the data.",
+    hint: "뜻: 패턴이 나타나다",
+    answer: "emerges",
+    explanation: "예문 전체: A clear pattern emerges in the data."
+  }
+];
+
 const teamQuizDecks = {
   "정주혜": quizDeck,
-  "김가연": kimGaYeonDeck
+  "김가연": kimGaYeonDeck,
+  "이근나": leeGeunNaDeck,
+  "김원미": kimWonMiDeck,
+  "김서윤": kimSeoYoonDeck,
+  "정혜원": jeongHyeWonDeck,
+  "허윤형": heoYoonHyeongDeck
 };
 
 const state = {
@@ -329,7 +899,7 @@ function updateProgress() {
     progressFillEl.style.width = "0%";
     deckStatusEl.textContent = state.selectedName
       ? `${state.selectedName} 퀴즈 준비 중`
-      : "이름을 먼저 선택하세요";
+      : "퀴즈 대기 중";
     return;
   }
 
