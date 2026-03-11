@@ -1,668 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouBuddy Challenge Certification</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #efe6d8;
-      --paper: #fbf7f0;
-      --paper-deep: #f3ebdf;
-      --beige-100: #f8f1e6;
-      --beige-200: #eadfcd;
-      --beige-300: #d8c7af;
-      --beige-400: #bca78b;
-      --beige-500: #9d8367;
-      --gold: #b7925f;
-      --gold-soft: #d9bf94;
-      --ink: #2f271f;
-      --ink-soft: #66584b;
-      --ink-faint: #9b8a79;
-      --line: rgba(183, 146, 95, 0.45);
-      --glass: rgba(255, 255, 255, 0.46);
-      --glass-strong: rgba(255, 255, 255, 0.72);
-      --shadow: 0 28px 80px rgba(90, 71, 45, 0.14);
-      --f-serif: "Cormorant Garamond", serif;
-      --f-sans: "Noto Sans KR", sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      padding: 32px 20px;
-      background:
-        radial-gradient(circle at top left, rgba(255, 255, 255, 0.55), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(183, 146, 95, 0.12), transparent 28%),
-        linear-gradient(135deg, #e8dece 0%, #f5efe7 48%, #e9dfd1 100%);
-      color: var(--ink);
-      font-family: var(--f-sans);
-    }
-
-    .page-wrap {
-      width: min(100%, 860px);
-      margin: 0 auto;
-    }
-
-    .cert {
-      position: relative;
-      min-height: 1123px;
-      padding: 18px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.1));
-      box-shadow: var(--shadow);
-    }
-
-    .paper {
-      position: relative;
-      min-height: 1087px;
-      padding: 46px 54px 40px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.45)),
-        linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
-      border: 1px solid rgba(183, 146, 95, 0.22);
-      overflow: hidden;
-    }
-
-    .paper::before,
-    .paper::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .paper::before {
-      top: -120px;
-      right: -80px;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(217, 191, 148, 0.28) 0%, transparent 70%);
-    }
-
-    .paper::after {
-      bottom: -140px;
-      left: -80px;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(188, 167, 139, 0.22) 0%, transparent 72%);
-    }
-
-    .frame-outer,
-    .frame-inner {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .frame-outer {
-      border: 1.5px solid var(--gold);
-    }
-
-    .frame-inner {
-      inset: 9px;
-      border: 1px solid rgba(183, 146, 95, 0.38);
-    }
-
-    .corner {
-      position: absolute;
-      width: 34px;
-      height: 34px;
-      pointer-events: none;
-    }
-
-    .corner::before,
-    .corner::after {
-      content: "";
-      position: absolute;
-      background: var(--gold);
-    }
-
-    .corner::before {
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 1.5px;
-    }
-
-    .corner::after {
-      top: 0;
-      left: 0;
-      width: 1.5px;
-      height: 100%;
-    }
-
-    .corner.tl { top: 18px; left: 18px; }
-    .corner.tr { top: 18px; right: 18px; transform: scaleX(-1); }
-    .corner.bl { bottom: 18px; left: 18px; transform: scaleY(-1); }
-    .corner.br { bottom: 18px; right: 18px; transform: scale(-1); }
-
-    .content {
-      position: relative;
-      z-index: 1;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 26px;
-    }
-
-    .brand-row {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
-    .brand-mark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--beige-500), var(--gold));
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-      box-shadow: 0 8px 18px rgba(157, 131, 103, 0.24);
-    }
-
-    .brand-name {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-name span {
-      color: var(--beige-500);
-    }
-
-    .top-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 20px;
-      padding: 7px 16px;
-      border: 1px solid rgba(183, 146, 95, 0.24);
-      background: var(--glass);
-      backdrop-filter: blur(14px);
-      color: var(--beige-500);
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .top-badge::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-
-    .cert-title {
-      font-family: var(--f-serif);
-      font-size: 48px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      line-height: 1;
-    }
-
-    .cert-subtitle {
-      margin-top: 6px;
-      font-family: var(--f-serif);
-      font-size: 20px;
-      font-style: italic;
-      color: var(--ink-soft);
-      letter-spacing: 0.1em;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      width: 280px;
-      margin: 18px auto 0;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold-soft));
-    }
-
-    .divider::after {
-      background: linear-gradient(270deg, transparent, var(--gold-soft));
-    }
-
-    .divider-dot {
-      width: 8px;
-      height: 8px;
-      transform: rotate(45deg);
-      background: var(--gold);
-    }
-
-    .name-section {
-      margin: 28px 0 20px;
-      text-align: center;
-    }
-
-    .eyebrow {
-      margin-bottom: 12px;
-      color: var(--ink-faint);
-      font-size: 11px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-    }
-
-    .name-card {
-      display: inline-block;
-      min-width: 420px;
-      max-width: 100%;
-      padding: 18px 40px;
-      border: 1px solid rgba(255, 255, 255, 0.65);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.42));
-      backdrop-filter: blur(16px);
-      border-radius: 999px;
-      box-shadow: 0 12px 32px rgba(109, 87, 57, 0.08);
-    }
-
-    .member-name {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-    }
-
-    .member-name span {
-      margin-left: 4px;
-      font-size: 17px;
-      font-weight: 400;
-      color: var(--ink-soft);
-    }
-
-    .member-meta {
-      margin-top: 6px;
-      color: var(--ink-soft);
-      font-size: 12px;
-      letter-spacing: 0.06em;
-    }
-
-    .summary-copy {
-      width: min(100%, 620px);
-      margin: 18px auto 0;
-      color: var(--ink-soft);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin: 22px 0 16px;
-    }
-
-    .stat-pill {
-      padding: 14px 16px;
-      border: 1px solid rgba(183, 146, 95, 0.18);
-      background: var(--glass);
-      backdrop-filter: blur(12px);
-      text-align: center;
-    }
-
-    .stat-value {
-      display: block;
-      color: var(--beige-500);
-      font-size: 17px;
-      font-weight: 700;
-    }
-
-    .stat-label {
-      display: block;
-      margin-top: 3px;
-      color: var(--ink-faint);
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .section {
-      margin-top: 12px;
-    }
-
-    .section-label {
-      margin-bottom: 10px;
-      color: var(--gold);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-    }
-
-    .card {
-      padding: 18px 20px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.35));
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(16px);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
-    }
-
-    .topic-text {
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--ink);
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .bullet-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .bullet-list li {
-      position: relative;
-      padding-left: 14px;
-      color: var(--ink);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .bullet-list li::before {
-      content: "";
-      position: absolute;
-      top: 8px;
-      left: 0;
-      width: 5px;
-      height: 5px;
-      transform: rotate(45deg);
-      background: var(--gold);
-    }
-
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      padding: 6px 12px;
-      border: 1px solid rgba(183, 146, 95, 0.28);
-      background: rgba(255, 255, 255, 0.62);
-      color: var(--beige-500);
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
-
-    .feature-card {
-      margin-top: 14px;
-      padding: 20px;
-      background: linear-gradient(180deg, rgba(52, 42, 33, 0.92), rgba(39, 31, 24, 0.9));
-      border: 1px solid rgba(217, 191, 148, 0.3);
-      box-shadow: inset 0 1px 0 rgba(217, 191, 148, 0.16);
-      color: #f5e7d2;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 16px;
-      margin-top: 12px;
-    }
-
-    .feature-row {
-      display: flex;
-      gap: 8px;
-      align-items: baseline;
-      padding: 5px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .feature-en {
-      color: var(--gold-soft);
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .feature-ko {
-      color: rgba(245, 231, 210, 0.82);
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
-    footer {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-top: 24px;
-      gap: 20px;
-    }
-
-    .signature {
-      min-width: 170px;
-    }
-
-    .signature-name {
-      font-family: var(--f-serif);
-      font-size: 22px;
-      font-style: italic;
-    }
-
-    .signature-line {
-      width: 110px;
-      height: 1px;
-      margin: 3px 0 5px;
-      background: rgba(183, 146, 95, 0.5);
-    }
-
-    .signature-role,
-    .issue-date,
-    .foot-note {
-      color: var(--ink-faint);
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .footer-center {
-      text-align: center;
-      flex: 1;
-    }
-
-    .footer-right {
-      text-align: right;
-    }
-
-    .print-guide {
-      margin-top: 14px;
-      text-align: center;
-      color: var(--ink-faint);
-      font-size: 11px;
-    }
-
-    @media print {
-      body {
-        padding: 0;
-        background: #fff;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You Buddy Interactive Quiz Card</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: "#f6efe6",
+            cream: "#fffdf9",
+            biscuit: "#ead8c4",
+            cocoa: "#5f4b3b",
+            latte: "#a78d78",
+            brand: "#d9b99b",
+            brandDeep: "#bf9b79"
+          },
+          boxShadow: {
+            soft: "0 22px 60px rgba(126, 94, 67, 0.12)"
+          }
+        }
       }
-
-      .page-wrap {
-        width: auto;
-      }
-
-      .cert {
-        box-shadow: none;
-      }
-
-      .print-guide {
-        display: none;
-      }
-    }
-  </style>
+    };
+  </script>
 </head>
-<body>
-  <div class="page-wrap">
-    <main class="cert">
-      <section class="paper">
-        <div class="frame-outer"></div>
-        <div class="frame-inner"></div>
-        <div class="corner tl"></div>
-        <div class="corner tr"></div>
-        <div class="corner bl"></div>
-        <div class="corner br"></div>
-
-        <div class="content">
-          <header>
-            <div class="brand-row">
-              <div class="brand-mark">y</div>
-              <div class="brand-name">you<span>buddy</span></div>
-            </div>
-
-            <div class="top-badge">3rd Premium Challenge Certification</div>
-            <h1 class="cert-title">YouBuddy Challenge Certification</h1>
-            <p class="cert-subtitle">3기 프리미엄 인증</p>
-            <div class="divider">
-              <div class="divider-dot"></div>
-            </div>
-          </header>
-
-          <section class="name-section">
-            <p class="eyebrow">This certificate is awarded to</p>
-
-            <div class="name-card">
-              <!-- EDIT: 이름 -->
-              <div class="member-name">김가연<span>님</span></div>
-              <!-- EDIT: 역할/팀 -->
-              <div class="member-meta">Premium Member · Global Product Team</div>
-            </div>
-
-            <p class="summary-copy">
-              2026년 2월 9일부터 2026년 3월 10일까지 YouBuddy 영어 챌린지 프리미엄 과정을 성실히 완주하고,
-              발표 중심 영어 루틴과 핵심 비즈니스 표현 학습을 성공적으로 마쳤음을 인증합니다.
+<body class="min-h-screen bg-gradient-to-br from-sand via-[#fbf7f2] to-white text-cocoa">
+  <main class="mx-auto flex min-h-screen w-full max-w-6xl items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
+    <section class="w-full overflow-hidden rounded-[32px] border border-[#efe3d5] bg-cream shadow-soft">
+      <div class="border-b border-[#f1e5d8] px-6 py-6 sm:px-8">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="mb-2 text-xs font-semibold uppercase tracking-[0.35em] text-latte">You Buddy</p>
+            <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Interactive Quiz Card</h1>
+            <p class="mt-2 max-w-2xl text-sm leading-6 text-latte sm:text-base">
+              팀원 발표 복습용 객관식 퀴즈 카드. 정답 확인, 해설, 진행률 표시까지 한 화면에서 처리합니다.
             </p>
-          </section>
+          </div>
 
-          <section class="stats-row">
-            <div class="stat-pill">
-              <span class="stat-value">Premium 3기</span>
-              <span class="stat-label">Certification Track</span>
-            </div>
-            <div class="stat-pill">
-              <span class="stat-value">2026.02.09 - 2026.03.10</span>
-              <span class="stat-label">Program Period</span>
-            </div>
-            <div class="stat-pill">
-              <span class="stat-value">1:1 Final Report</span>
-              <span class="stat-label">Member Edition</span>
-            </div>
-          </section>
-
-          <section class="section">
-            <div class="section-label">Presentation Topic</div>
-            <div class="card">
-              <!-- EDIT: 발표 주제 -->
-              <p class="topic-text">Customer Research &amp; Improvement Plans for Model A</p>
-            </div>
-          </section>
-
-          <section class="two-col">
-            <div class="section">
-              <div class="section-label">Strengths</div>
-              <div class="card">
-                <!-- EDIT: 강점 -->
-                <ul class="bullet-list">
-                  <li>발표 흐름이 자연스럽고 전체 메시지를 안정적으로 끌고 가는 힘이 좋았습니다.</li>
-                  <li>정량/정성 조사, willingness to pay 같은 비즈니스 표현을 실제 발표 문맥에 잘 연결했습니다.</li>
-                  <li>예상 밖 질문에도 핵심 포인트를 놓치지 않고 영어로 대응하는 순발력이 돋보였습니다.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="section">
-              <div class="section-label">Growth Points</div>
-              <div class="card">
-                <!-- EDIT: 성장 포인트 -->
-                <ul class="bullet-list">
-                  <li>평가 표현을 더 정교하게 다듬으면 발표 톤이 한층 프로페셔널해집니다.</li>
-                  <li>전문 용어를 키워드화한 뒤 짧게 즉답하는 연습을 하면 Q&amp;A 전달력이 더 좋아집니다.</li>
-                  <li>숫자와 비교 표현을 묶어서 말하는 루틴을 만들면 설득력이 더 올라갑니다.</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <section class="section">
-            <div class="section-label">Key Vocabulary</div>
-            <div class="card">
-              <!-- EDIT: 개인 핵심 어휘 -->
-              <div class="tag-row">
-                <span class="tag">walk through</span>
-                <span class="tag">dive into</span>
-                <span class="tag">action plan</span>
-                <span class="tag">willingness to pay</span>
-                <span class="tag">insight</span>
-              </div>
-            </div>
-          </section>
-
-          <section class="feature-card">
-            <div class="section-label">Final Vocabulary · Presentation Highlights</div>
-            <div class="feature-grid">
-              <div class="feature-row"><span class="feature-en">full-blown</span><span class="feature-ko">본격적인, 완전한</span></div>
-              <div class="feature-row"><span class="feature-en">mass market</span><span class="feature-ko">대중 시장</span></div>
-              <div class="feature-row"><span class="feature-en">distinct</span><span class="feature-ko">뚜렷한, 차별화된</span></div>
-              <div class="feature-row"><span class="feature-en">commitment to</span><span class="feature-ko">~에 대한 의지, 헌신</span></div>
-              <div class="feature-row"><span class="feature-en">as quickly as possible</span><span class="feature-ko">가능한 한 빠르게</span></div>
-              <div class="feature-row"><span class="feature-en">bumps ... to</span><span class="feature-ko">~까지 끌어올리다</span></div>
-              <div class="feature-row"><span class="feature-en">retaining</span><span class="feature-ko">유지하면서</span></div>
-              <div class="feature-row"><span class="feature-en">reinforcements</span><span class="feature-ko">보강, 강화</span></div>
-            </div>
-          </section>
-
-          <footer>
-            <div class="signature">
-              <div class="signature-name">YouBuddy</div>
-              <div class="signature-line"></div>
-              <div class="signature-role">Director · YouBuddy</div>
-            </div>
-
-            <div class="footer-center">
-              <div class="issue-date">Issued on March 11, 2026</div>
-            </div>
-
-            <div class="footer-right">
-              <div class="foot-note">Premium Member Report</div>
-              <div class="foot-note">@youbuddy_day</div>
-            </div>
-          </footer>
+          <div class="inline-flex items-center gap-2 rounded-full border border-[#efe3d5] bg-white/80 px-4 py-2 text-sm text-latte">
+            <span class="h-2.5 w-2.5 rounded-full bg-brandDeep"></span>
+            <span id="deck-status">퀴즈 대기 중</span>
+          </div>
         </div>
-      </section>
-    </main>
 
-    <p class="print-guide">브라우저에서 인쇄 후 PDF 저장: 배경 그래픽 포함, 여백 없음 또는 최소</p>
+        <div class="mt-6">
+          <div class="mb-2 flex items-center justify-between text-sm text-latte">
+            <span id="progress-label">0 / 0</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="h-3 overflow-hidden rounded-full bg-[#f1e6da]">
+            <div id="progress-fill" class="h-full w-0 rounded-full bg-gradient-to-r from-brand to-brandDeep transition-all duration-300"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid gap-6 px-6 py-6 sm:px-8 lg:grid-cols-[1.15fr_0.85fr]">
+        <section class="rounded-[28px] border border-[#efe3d5] bg-white p-6 sm:p-8">
+          <div id="profile-screen">
+            <div class="mb-6 flex items-center justify-between gap-3">
+              <span class="rounded-full bg-sand px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-latte">
+                Team Members
+              </span>
+              <span class="text-sm text-latte">Profile Select</span>
+            </div>
+
+            <h2 class="text-2xl font-semibold leading-tight sm:text-3xl">
+              본인 이름을 누르고 퀴즈로 들어가세요.
+            </h2>
+            <p class="mt-3 text-sm leading-6 text-latte sm:text-base">
+              팀원별로 다른 문제 세트를 연결할 수 있게 구성했습니다.
+            </p>
+
+            <div id="profile-list" class="mt-8 grid gap-3"></div>
+          </div>
+
+          <div id="quiz-screen" class="hidden">
+            <div class="mb-6 flex items-center justify-between gap-3">
+              <span id="category-badge" class="rounded-full bg-sand px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-latte">
+                Ready
+              </span>
+              <span class="text-sm text-latte">Multiple Choice</span>
+            </div>
+
+            <div class="mb-5 flex items-center justify-between gap-3">
+              <div>
+                <p class="text-xs uppercase tracking-[0.22em] text-latte">Selected Member</p>
+                <p id="selected-name" class="mt-1 text-lg font-semibold text-cocoa">-</p>
+              </div>
+              <button
+                id="back-btn"
+                type="button"
+                class="inline-flex items-center justify-center rounded-full border border-[#e8d7c6] bg-[#fffaf4] px-4 py-2 text-sm font-semibold text-cocoa transition hover:bg-[#f8efe5]"
+              >
+                이름 다시 선택
+              </button>
+            </div>
+
+            <h2 id="question-text" class="text-2xl font-semibold leading-tight sm:text-3xl">
+              퀴즈 데이터를 넣으면 여기에서 카드가 시작됩니다.
+            </h2>
+            <p id="question-hint" class="mt-3 text-sm leading-6 text-latte sm:text-base"></p>
+
+            <div id="options-container" class="mt-8 grid gap-3"></div>
+
+            <div id="answer-form" class="mt-8 hidden">
+              <label for="answer-input" class="mb-2 block text-sm font-semibold text-latte">답변 입력</label>
+              <input
+                id="answer-input"
+                type="text"
+                class="w-full rounded-[22px] border border-[#e8d7c6] bg-[#fffaf4] px-5 py-4 text-base text-cocoa outline-none transition focus:border-[#d1b59a] focus:bg-white"
+                placeholder="여기에 답을 입력하세요"
+              />
+              <div class="mt-4 flex flex-wrap gap-3">
+                <button
+                  id="submit-btn"
+                  type="button"
+                  class="inline-flex items-center justify-center rounded-full bg-cocoa px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#4c3c30]"
+                >
+                  제출
+                </button>
+                <button
+                  id="reveal-btn"
+                  type="button"
+                  class="inline-flex items-center justify-center rounded-full border border-[#e8d7c6] bg-[#fffaf4] px-5 py-3 text-sm font-semibold text-cocoa transition hover:bg-[#f8efe5]"
+                >
+                  정답 보기
+                </button>
+              </div>
+            </div>
+
+            <div id="feedback-panel" class="mt-8 hidden rounded-3xl border px-5 py-4">
+              <p id="feedback-title" class="text-sm font-semibold uppercase tracking-[0.2em]"></p>
+              <p id="feedback-answer" class="mt-2 text-lg font-medium"></p>
+              <p id="feedback-explanation" class="mt-3 text-sm leading-6 text-latte sm:text-base"></p>
+            </div>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p id="helper-text" class="text-sm text-latte">
+                이름을 고르면 해당 팀원 퀴즈가 표시됩니다.
+              </p>
+              <button
+                id="next-btn"
+                type="button"
+                class="inline-flex items-center justify-center rounded-full bg-cocoa px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#4c3c30] disabled:cursor-not-allowed disabled:bg-[#d7c9bb]"
+                disabled
+              >
+                다음 문제
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="rounded-[28px] border border-[#efe3d5] bg-sand/60 p-6 sm:p-8">
+          <h3 class="text-lg font-semibold">사용 방법</h3>
+          <ul class="mt-4 space-y-3 text-sm leading-6 text-latte sm:text-base">
+            <li>1. 팀원 이름 버튼을 누르면 그 사람 전용 퀴즈로 들어갑니다.</li>
+            <li>2. <code class="rounded bg-white px-1.5 py-0.5 text-cocoa">app.js</code> 안에 팀원별 문제 배열을 넣으면 됩니다.</li>
+            <li>3. 객관식 버튼을 누르면 정답/오답과 해설이 바로 표시됩니다.</li>
+            <li>4. 현재 문제를 확인한 뒤 `다음 문제` 버튼으로 다음 카드로 이동합니다.</li>
+          </ul>
+
+          <div class="mt-8 rounded-3xl border border-[#eadbcd] bg-white/80 p-5">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-latte">데이터 포맷</p>
+            <pre class="mt-3 overflow-x-auto text-xs leading-6 text-cocoa sm:text-sm"><code>{
+  "정주혜": [
+    {
+      category: "Vocabulary",
+      question: "질문 내용",
+      options: ["보기1", "보기2", "보기3", "보기4"],
+      answer: "정답 보기",
+      explanation: "해설"
+    }
+  ]
+}</code></pre>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="result-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/30 px-4">
+    <div class="w-full max-w-md rounded-[28px] border border-[#efe3d5] bg-[#fffdf9] p-6 shadow-soft">
+      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-latte">Quiz Result</p>
+      <h3 class="mt-3 text-2xl font-semibold text-cocoa">정주혜 퀴즈 완료</h3>
+      <p id="result-score" class="mt-4 text-3xl font-semibold text-cocoa">0 / 0</p>
+      <p id="result-message" class="mt-3 text-sm leading-6 text-latte sm:text-base"></p>
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+        <button
+          id="retry-btn"
+          type="button"
+          class="inline-flex w-full items-center justify-center rounded-full bg-cocoa px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#4c3c30]"
+        >
+          다시 풀기
+        </button>
+        <button
+          id="close-modal-btn"
+          type="button"
+          class="inline-flex w-full items-center justify-center rounded-full border border-[#e8d7c6] bg-[#fffaf4] px-5 py-3 text-sm font-semibold text-cocoa transition hover:bg-[#f8efe5]"
+        >
+          닫기
+        </button>
+      </div>
+    </div>
   </div>
+
+  <script src="app.js?v=20260310-01"></script>
 </body>
 </html>
